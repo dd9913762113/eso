@@ -356,44 +356,44 @@ class _EditSourcePageState extends State<EditSourcePage> {
             tooltip: "选项",
             items: [
               rule.enableSearch
-                  ? MenuItem(
+                  ? DKMenuItem(
                       text: '搜索',
                       icon: OMIcons.toggleOn,
                       color: Global.primaryColor,
                       value: MenuEditSource.disable_search,
                     )
-                  : MenuItem(
+                  : DKMenuItem(
                       text: '搜索',
                       icon: OMIcons.toggleOff,
                       color: Colors.grey,
                       value: MenuEditSource.enable_search,
                     ),
               rule.enableDiscover
-                  ? MenuItem(
+                  ? DKMenuItem(
                       text: '发现',
                       icon: OMIcons.toggleOn,
                       color: Global.primaryColor,
                       value: MenuEditSource.disable_discover,
                     )
-                  : MenuItem(
+                  : DKMenuItem(
                       text: '发现',
                       icon: OMIcons.toggleOff,
                       color: Colors.grey,
                       value: MenuEditSource.enable_discover,
                     ),
-              MenuItem(
+              DKMenuItem(
                 text: '置顶',
                 icon: OMIcons.arrowUpward,
                 value: MenuEditSource.top,
                 color: Global.primaryColor,
               ),
-              MenuItem(
+              DKMenuItem(
                 text: '预览',
                 icon: OMIcons.category,
                 value: MenuEditSource.preview,
                 color: Global.primaryColor,
               ),
-              MenuItem(
+              DKMenuItem(
                 text: '删除',
                 icon: OMIcons.deleteSweep,
                 value: MenuEditSource.delete_this,

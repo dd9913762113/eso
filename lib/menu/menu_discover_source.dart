@@ -12,32 +12,32 @@ enum MenuDiscoverSource {
   share,
 }
 
-List<MenuItem<MenuDiscoverSource>> discoverSourceMenus = [
-  MenuItem<MenuDiscoverSource>(
+List<DKMenuItem<MenuDiscoverSource>> discoverSourceMenus = [
+  DKMenuItem<MenuDiscoverSource>(
     text: '编辑',
     icon: OMIcons.settingsEthernet,
     value: MenuDiscoverSource.edit,
     color: Global.primaryColor,
   ),
-  MenuItem<MenuDiscoverSource>(
+  DKMenuItem<MenuDiscoverSource>(
     text: '置顶',
     icon: OMIcons.arrowUpward,
     value: MenuDiscoverSource.top,
     color: Global.primaryColor,
   ),
-  MenuItem<MenuDiscoverSource>(
+  DKMenuItem<MenuDiscoverSource>(
     text: '删除',
     icon: OMIcons.deleteSweep,
     value: MenuDiscoverSource.delete,
     color: Global.primaryColor,
   ),
-  MenuItem<MenuDiscoverSource>(
+  DKMenuItem<MenuDiscoverSource>(
     text: '复制',
     icon: OMIcons.fileCopy,
     value: MenuDiscoverSource.copy,
     color: Global.primaryColor,
   ),
-  MenuItem<MenuDiscoverSource>(
+  DKMenuItem<MenuDiscoverSource>(
     text: '分享',
     icon: FIcons.share_2,
     value: MenuDiscoverSource.share,

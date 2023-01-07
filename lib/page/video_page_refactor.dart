@@ -256,7 +256,7 @@ class VideoPage extends StatelessWidget {
             icon: Icons.slow_motion_video_outlined,
             color: Colors.white,
             items: [0.5, 0.75, 1.0, 1.25, 1.5, 1.75, 2.0]
-                .map((value) => MenuItem<double>(
+                .map((value) => DKMenuItem<double>(
                       value: value,
                       text: "$value",
                       textColor: (speed - value).abs() < 0.1 ? primaryColor : null,

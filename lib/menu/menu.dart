@@ -7,15 +7,15 @@ import 'package:outline_material_icons/outline_material_icons.dart';
 void voidValueFunction(_) {}
 
 class Menu<T> extends StatelessWidget {
-  final List<MenuItem<T>> items;
+  final List<DKMenuItem<T>>? items;
   final IconData icon;
-  final Color color;
-  final String tooltip;
-  final FutureOr Function(T value) onSelect;
-  final Widget child;
+  final Color? color;
+  final String? tooltip;
+  final FutureOr Function(T value)? onSelect;
+  final Widget? child;
 
   const Menu({
-    Key key,
+    Key? key,
     this.icon = OMIcons.moreVert,
     this.color,
     this.tooltip = "更多",
@@ -41,19 +41,23 @@ class Menu<T> extends StatelessWidget {
           position: RelativeRect.fromLTRB(details.globalPosition.dx,
               details.globalPosition.dy, details.globalPosition.dx + 60, 0),
           items: [
-            for (final item in items)
+            for (final item in items!)
               PopupMenuItem<T>(
                 value: item.value,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text(item.text, style: TextStyle(color: item.textColor),),
+                    Text(item.text ?? "", style: TextStyle(color: item.textColor),),
                     Icon(item.icon, color: item.color),
                   ],
                 ),
               ),
           ],
-        ).then(onSelect);
+        // ).then(onSelect);
+        ).then((onSelect){
+          print("onSelect $onSelect");
+        });
+
       },
     );
   }

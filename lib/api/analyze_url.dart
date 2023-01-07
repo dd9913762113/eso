@@ -13,8 +13,8 @@ class AnalyzeUrl {
     Rule rule, {
     String keyword = "",
     String result = "",
-    int page,
-    int pageSize,
+    required int page,
+    required int pageSize,
   }) async {
     url = url.trim();
     if (url == "null") return originalHttp.Response("", 200);

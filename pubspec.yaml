@@ -6,7 +6,8 @@ homepage: https://github.com/mabdc/eso
 author: mabdc
 
 environment:
-  sdk: ">=2.7.0 <3.2.0"
+#  sdk: ">=2.7.0 <3.2.0"
+  sdk: ">=2.18.4 <3.2.0"
 
 dependencies:
   about: ^2.0.0
