@@ -44,14 +44,14 @@ class Global with ChangeNotifier {
   static const textConfigKey = "textConfig";
   // static SharedPreferences _prefs;
   // static SharedPreferences get prefs => _prefs;
-  static bool _isDesktop;
+  static bool _isDesktop = false;
   static bool get isDesktop => _isDesktop;
   static const fullSpace = "　";
-  static int currentHomePage;
-  static Color primaryColor;
+  static int currentHomePage = 0;
+  static Color primaryColor = Colors.white;
 
-  static RuleDao _ruleDao;
-  static RuleDao get ruleDao => _ruleDao;
+  static RuleDao? _ruleDao ;
+  static RuleDao? get ruleDao => _ruleDao;
 
   static Future<void> initFont() async {
     final profile = ESOTheme();

@@ -11,17 +11,17 @@ import '../global.dart';
 class CacheUtil {
   static const String _basePath = 'cache';
   static const String _backupPath = 'backup';
-  static String _cacheBasePath, _cacheStoragePath;
+  static String _cacheBasePath = "", _cacheStoragePath = "";
 
   /// 缓存名称
-  final String cacheName;
+   String? cacheName = "";
 
   /// 基路径
-  final String basePath;
+   String? basePath = "";
 
   /// 是否是备份
-  final bool backup;
-
+   bool? backup = false;
+  // CacheUtil CacheUtil({   String? cacheName,   String? basePath,   bool? backup = false, })
   CacheUtil({this.cacheName, this.basePath, this.backup = false});
 
   String _cacheDir;
@@ -37,12 +37,12 @@ class CacheUtil {
     return true;
   }
 
-  Future<String> cacheDir([bool allCache]) async {
+  Future<String> cacheDir([bool? allCache]) async {
     try {
       await requestPermission();
     } catch (e) {}
     if (_cacheDir != null && allCache != true) return _cacheDir;
-    var dir = await getCacheBasePath(backup);
+    var dir = await getCacheBasePath(backup!);
     if (dir == null || dir.isEmpty) return null;
     dir = dir + _separator + 'eso';
     if (this.basePath == null || this.basePath.isEmpty)

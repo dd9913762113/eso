@@ -2,14 +2,15 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:developer';
 
+import 'package:eso/api/analyzer_filter.dart';
 import 'package:eso/api/api_js_engine.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter_webview/flutter_webview.dart';
-
+// import 'package:flutter_webview/flutter_webview.dart';
+import 'package:webview_flutter/webview_flutter.dart';
 import 'analyzer.dart';
 
 class AnalyzerWebview implements Analyzer {
-  String _content;
+  String _content = "";
   @override
   AnalyzerWebview parse(content) {
     if (content == null) {

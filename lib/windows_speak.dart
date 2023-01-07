@@ -159,7 +159,7 @@ class Sapi {
   final ISapi iSapi;
   bool hasFree = false;
 
-  static Sapi _sapi;
+  static Sapi? _sapi;
 
   factory Sapi.createInstance() => _sapi ??= Sapi._();
 

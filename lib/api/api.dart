@@ -1,11 +1,12 @@
 import 'package:equatable/equatable.dart';
+import 'package:win32/win32.dart';
 
 import '../database/chapter_item.dart';
 import '../database/search_item.dart';
 
 abstract class API {
-  static String chapterUrl;
-  static String contentUrl;
+  static String? chapterUrl;
+  static String? contentUrl;
 
   static const MANGA = 0;
   static const NOVEL = 1;
@@ -71,14 +72,14 @@ abstract class API {
 }
 
 class BaseAPI implements API {
-  String _origin;
-  String _originTag;
-  int _ruleContentType;
+  String _origin = "";
+  String _originTag = "";
+  int _ruleContentType = 0;
 
-  BaseAPI({String origin, String originTag, int ruleContentType}) {
-    _origin = origin;
-    _originTag = originTag;
-    _ruleContentType = ruleContentType;
+  BaseAPI({String? origin, String? originTag, int? ruleContentType}) {
+    _origin = origin ?? "";
+    _originTag = originTag ?? "";
+    _ruleContentType = ruleContentType ?? 0;
   }
 
   String get origin => _origin;

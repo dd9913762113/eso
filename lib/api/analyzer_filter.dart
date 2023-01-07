@@ -7,15 +7,15 @@ import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 import 'analyzer.dart';
 
 Future<dynamic> webviewIOS({
-  String url,
-  int duration,
-  bool Function(dynamic args) callback,
-  String ua,
-  String cookies,
+  String? url = "",
+  int? duration = 0,
+  bool Function(dynamic args)? callback,
+  String? ua = "",
+  String? cookies = "",
 }) async {
   Completer c = new Completer();
-  InAppWebViewController webViewController;
-  Map<String, String> headers;
+  InAppWebViewController webViewController = InAppWebViewController();
+  Map<String, String>? headers;
   InAppWebViewGroupOptions options = InAppWebViewGroupOptions(
     crossPlatform: InAppWebViewOptions(
       userAgent:
@@ -44,7 +44,7 @@ Future<dynamic> webviewIOS({
       "url": url
     };
 
-    if (callback(args) == true && !c.isCompleted) {
+    if (callback!(args) == true && !c.isCompleted) {
       c.complete(args);
     }
   }
@@ -57,7 +57,7 @@ Future<dynamic> webviewIOS({
 
   onLoadStop(InAppWebViewController controller, Uri uri) {
     if ((uri as String).isNotEmpty) {
-      Future.delayed(Duration(seconds: duration), () {
+      Future.delayed(Duration(seconds: duration ?? 0), () {
         c.completeError("网络错误;嗅探失败!");
       });
     }
@@ -76,7 +76,7 @@ Future<dynamic> webviewIOS({
   await hlswebview.run();
   await webViewController.loadUrl(
     urlRequest: URLRequest(
-      url: Uri.parse(url),
+      url: Uri.parse(url!),
       headers: {
         'Cookie': (cookies != null && cookies.isNotEmpty) ? cookies : '',
       },

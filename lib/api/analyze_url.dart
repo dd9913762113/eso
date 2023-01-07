@@ -93,8 +93,8 @@ class AnalyzeUrl {
             : Encoding.getByName("${r['encoding']}");
         u = u.replaceAllMapped(
             RegExp(r"[^\x00-\x7F]+"),
-            (match) => encoding
-                .encode(match.group(0))
+            (match) => encoding!
+                .encode(match.group(0) ?? "")
                 .map((code) => _urlEncode(code.toRadixString(16).toUpperCase()))
                 .join());
       }
@@ -105,15 +105,16 @@ class AnalyzeUrl {
         return http.put(u, headers: headers, body: body);
       }
       if (method == 'post') {
+        var sss =  r['encoding'] != null
+            ? "${r['encoding']}".contains("gb")
+            ? gbk
+            : Encoding.getByName("${r['encoding']}")
+            : null;
         return http.post(
           u,
           headers: headers,
           body: body,
-          encoding: r['encoding'] != null
-              ? "${r['encoding']}".contains("gb")
-                  ? gbk
-                  : Encoding.getByName("${r['encoding']}")
-              : null,
+          encoding: sss!,
         );
       }
       throw ('error parser url rule');

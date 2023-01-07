@@ -53,7 +53,7 @@ void main() async {
 class ErrorApp extends StatelessWidget {
   final error;
   final stackTrace;
-  const ErrorApp({Key key, this.error, this.stackTrace}) : super(key: key);
+  const ErrorApp({Key? key, this.error, this.stackTrace}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -73,17 +73,17 @@ class ErrorApp extends StatelessWidget {
   }
 }
 
-BoxDecoration globalDecoration;
+BoxDecoration globalDecoration = BoxDecoration();
 
 class MyApp extends StatefulWidget {
-  const MyApp({Key key}) : super(key: key);
+  const MyApp({Key? key}) : super(key: key);
 
   @override
   State<MyApp> createState() => _MyAppState();
 }
 
 class _MyAppState extends State<MyApp> {
-  StackTrace _stackTrace;
+  late StackTrace _stackTrace;
   dynamic _error;
   InitFlag initFlag = InitFlag.wait;
 

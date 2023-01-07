@@ -12,16 +12,16 @@ Client get nosslClient {
   return IOClient(ioClient);
 }
 
-Future<Response> get(String url, {Map<String, String> headers}) {
+Future<Response> get(String url, {Map<String, String>? headers}) {
   return nosslClient.get(Uri.parse(url), headers: headers);
 }
 
-Future<Response> put(String url, {Map<String, String> headers, dynamic body}) {
+Future<Response> put(String url, {Map<String, String>? headers, dynamic body}) {
   return nosslClient.put(Uri.parse(url), headers: headers, body: body);
 }
 
 Future<Response> post(String url,
-    {Map<String, String> headers, dynamic body, Encoding encoding}) async {
+    {Map<String, String>? headers, dynamic body, Encoding? encoding}) async {
   final response =
       await nosslClient.post(Uri.parse(url), headers: headers, body: body, encoding: encoding);
 
@@ -32,9 +32,9 @@ Future<Response> post(String url,
     var location = response.headers['location'];
     if (location == null || location.isEmpty) return response;
     if (location.startsWith("//")) {
-      location = "${response.request.url.scheme}:$location";
+      location = "${response.request?.url.scheme}:$location";
     } else if (location.startsWith("/")) {
-      location = "${response.request.url.scheme}://${response.request.url.host}$location";
+      location = "${response.request?.url.scheme}://${response.request?.url.host}$location";
     }
     return nosslClient.get(Uri.parse(location), headers: headers);
   }

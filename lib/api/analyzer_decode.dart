@@ -5,7 +5,7 @@ import 'package:html/dom.dart';
 import 'analyzer.dart';
 
 class AnalyzerDecode implements Analyzer {
-  String _content;
+  String _content = "";
 
   @override
   AnalyzerDecode parse(content) {

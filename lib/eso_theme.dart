@@ -384,13 +384,13 @@ class ESOTheme {
     version = lastestVersion;
   }
 
-  static String staticFontFamily;
+  static String staticFontFamily = "";
 
   void fromJson(Map<String, dynamic> json, [bool notIgnoreVersion = true]) {
     _box.putAll(json);
   }
 
-  Map<String, dynamic> toJson() => _box.toMap();
+  Map toJson() => _box.toMap();
 }
 
 T cast<T>(x, T defaultValue) => x is T ? x : defaultValue; // 安全转换

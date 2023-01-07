@@ -5,8 +5,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
 class SearchItem extends HiveObject{
-  String searchUrl;
-  String chapterUrl;
+  String? searchUrl;
+  String? chapterUrl;
 
   bool operator ==(Object other) =>
       other is SearchItem && runtimeType == other.runtimeType && id == other.id;
@@ -14,74 +14,68 @@ class SearchItem extends HiveObject{
   @override
   int get hashCode => id;
 
-  int id;
+  int id = 0;
 
   /// 源名
-  String origin;
+  String? origin;
 
   /// 源id
-  String originTag;
+  String? originTag;
 
   /// 封面
-  String cover;
+  String? cover;
 
   /// 名称
-  String name;
+  String? name;
 
   /// 作者
-  String author;
+  String? author;
 
   /// 最新章节
-  String chapter;
+  String? chapter;
 
   /// 简介
-  String description;
+  String? description;
 
   /// 分类
-  List<String> tags;
+  List<String>? tags;
 
   /// 搜索结果
-  String url;
+  String? url;
   // Future<String> get absoloteUrl async => (await Global.ruleDao.findRuleById(originTag));
-  int ruleContentType;
-  int chapterListStyle;
-  String durChapter;
-  int durChapterIndex;
-  int durContentIndex;
-  int chaptersCount;
-  bool reverseChapter;
-  List<ChapterItem> chapters;
+  int? ruleContentType;
+  int? chapterListStyle;
+  String? durChapter;
+  int? durChapterIndex;
+  int? durContentIndex;
+  int? chaptersCount;
+  bool? reverseChapter;
+  List<ChapterItem>? chapters;
 
   /// 收藏时间
-  int createTime;
+  int? createTime;
 
   /// 更新时间
-  int updateTime;
+  int? updateTime;
 
   /// 最后阅读时间
-  int lastReadTime;
+  int? lastReadTime;
 
   SearchItem({
-    this.searchUrl,
-    this.chapterUrl,
-    @required this.cover,
-    @required this.name,
-    @required this.author,
-    @required this.chapter,
-    @required this.description,
-    @required this.url,
-    @required API api,
-    this.chaptersCount,
-    this.reverseChapter,
-    this.chapters,
-    @required this.tags,
+    this.searchUrl = "",
+    this.chapterUrl= "",
+    required this.cover,
+    required this.name,
+    required this.author,
+    required this.chapter,
+    required this.description,
+    required this.url,
+    required API api,
+    this.chaptersCount = 0,
+    this.reverseChapter = false,
+    this.chapters = null,
+    required this.tags,
   }) {
-    if (chaptersCount == null) {
-      chaptersCount = 0;
-    }
-    if (reverseChapter == null) {
-      reverseChapter = false;
-    }
     if (api != null) {
       origin = api.origin;
       originTag = api.originTag;
@@ -135,7 +129,7 @@ class SearchItem extends HiveObject{
         "durContentIndex": durContentIndex,
         "chaptersCount": chaptersCount,
         "reverseChapter": reverseChapter,
-        "tags": tags != null ? tags.join(", ") : null,
+        "tags": tags != null ? tags?.join(", ") : null,
         "createTime": createTime,
         "updateTime": updateTime,
         "lastReadTime": lastReadTime,
@@ -215,9 +209,12 @@ class SearchItem extends HiveObject{
   }
 
   localAddInfo(SearchItem searchItem) {
-    if (searchItem.author.isNotEmpty) author = searchItem.author;
-    if (searchItem.cover.isNotEmpty) cover = searchItem.cover;
-    if (searchItem.tags.isNotEmpty) tags = searchItem.tags;
-    if (searchItem.description.isNotEmpty) description = searchItem.description;
+    if (searchItem.author != null) {
+      author = searchItem.author;
+    }
+    if (searchItem.author != null) author = searchItem.author;
+    if (searchItem.cover != null) cover = searchItem.cover;
+    if (searchItem.tags != null) tags = searchItem.tags;
+    if (searchItem.description != null) description = searchItem.description;
   }
 }
